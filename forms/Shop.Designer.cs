@@ -31,23 +31,23 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Shop));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button5 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.productMenu = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,6 +83,17 @@
             this.tableLayoutPanel1.SetRowSpan(this.label2, 2);
             this.label2.Size = new System.Drawing.Size(0, 32);
             this.label2.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1512, 23);
+            this.pictureBox1.Name = "pictureBox1";
+            this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 2);
+            this.pictureBox1.Size = new System.Drawing.Size(91, 67);
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
             // 
             // comboBox1
             // 
@@ -128,17 +139,6 @@
             this.panel1.Size = new System.Drawing.Size(244, 942);
             this.panel1.TabIndex = 5;
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.White;
-            this.pictureBox2.Image = global::QLXeMay.Properties.Resources.biker;
-            this.pictureBox2.Location = new System.Drawing.Point(48, 0);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(151, 113);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
-            // 
             // button5
             // 
             this.button5.FlatAppearance.BorderSize = 0;
@@ -146,9 +146,9 @@
             this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button5.Image = global::QLXeMay.Properties.Resources.logout1;
             this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 611);
+            this.button5.Location = new System.Drawing.Point(22, 611);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(241, 65);
+            this.button5.Size = new System.Drawing.Size(219, 65);
             this.button5.TabIndex = 0;
             this.button5.Text = "   Home";
             this.button5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -161,9 +161,9 @@
             this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Image = global::QLXeMay.Properties.Resources.user__1_;
             this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 492);
+            this.button4.Location = new System.Drawing.Point(22, 487);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(241, 68);
+            this.button4.Size = new System.Drawing.Size(222, 68);
             this.button4.TabIndex = 0;
             this.button4.Text = "   Profile";
             this.button4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -177,11 +177,11 @@
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Image = global::QLXeMay.Properties.Resources.revenue2;
             this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 243);
+            this.button3.Location = new System.Drawing.Point(22, 44);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(244, 65);
+            this.button3.Size = new System.Drawing.Size(222, 65);
             this.button3.TabIndex = 0;
-            this.button3.Text = "   Doanh thu";
+            this.button3.Text = "   Trang chủ";
             this.button3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.button3.UseVisualStyleBackColor = true;
             // 
@@ -192,9 +192,9 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = global::QLXeMay.Properties.Resources.shopping_cart;
             this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 141);
+            this.button2.Location = new System.Drawing.Point(22, 236);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(244, 65);
+            this.button2.Size = new System.Drawing.Size(222, 65);
             this.button2.TabIndex = 0;
             this.button2.Text = "   Đơn hàng";
             this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -207,9 +207,9 @@
             this.productMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.productMenu.Image = global::QLXeMay.Properties.Resources.motocycle;
             this.productMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.productMenu.Location = new System.Drawing.Point(0, 25);
+            this.productMenu.Location = new System.Drawing.Point(22, 133);
             this.productMenu.Name = "productMenu";
-            this.productMenu.Size = new System.Drawing.Size(244, 65);
+            this.productMenu.Size = new System.Drawing.Size(222, 65);
             this.productMenu.TabIndex = 0;
             this.productMenu.Text = "   Sản phẩm";
             this.productMenu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -219,16 +219,16 @@
             this.productMenu.MouseLeave += new System.EventHandler(this.productMenu_MouseLeave);
             this.productMenu.MouseHover += new System.EventHandler(this.productMenu_MouseHover);
             // 
-            // pictureBox1
+            // pictureBox2
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1512, 23);
-            this.pictureBox1.Name = "pictureBox1";
-            this.tableLayoutPanel1.SetRowSpan(this.pictureBox1, 2);
-            this.pictureBox1.Size = new System.Drawing.Size(91, 67);
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox2.BackColor = System.Drawing.Color.White;
+            this.pictureBox2.Image = global::QLXeMay.Properties.Resources.biker;
+            this.pictureBox2.Location = new System.Drawing.Point(48, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(151, 113);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 6;
+            this.pictureBox2.TabStop = false;
             // 
             // panel2
             // 
@@ -272,9 +272,9 @@
             this.Text = "Shop";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
