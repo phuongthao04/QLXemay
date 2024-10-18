@@ -1,0 +1,28 @@
+# Tệp nhị phân
+*.exe
+*.dll
+*.pdb
+
+# Thư mục build
+/bin/
+/obj/
+
+# Các tệp cấu hình của Visual Studio
+.vs/
+*.suo
+*.user
+*.userprefs
+*.sln.docstates
+
+# Thư mục NuGet
+*.nupkg
+packages/
+
+# Tệp tạm thời
+*.tmp
+*.temp
+*.log
+
+# Các tệp khác
+*.db
+*.cache
