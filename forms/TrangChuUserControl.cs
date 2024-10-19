@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace QLXeMay
+namespace QLXeMay.forms
 {
-    public partial class Shop : Form
+    public partial class TrangChuUserControl : UserControl
     {
-        public Shop()
+        public TrangChuUserControl()
         {
             InitializeComponent();
         }

@@ -65,12 +65,25 @@
     <Compile Include="components\RoundedButton.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="data-connection\ClassQLXM.cs" />
     <Compile Include="data-connection\DatabaseUtils.cs" />
-    <Compile Include="forms\Home.cs">
+    <Compile Include="forms\KhachHangUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\KhachHangUserControl.Designer.cs">
+      <DependentUpon>KhachHangUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\SanPhamUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\SanPhamUserControl.Designer.cs">
+      <DependentUpon>SanPhamUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\Shop.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\Home.Designer.cs">
-      <DependentUpon>Home.cs</DependentUpon>
+    <Compile Include="forms\Shop.Designer.cs">
+      <DependentUpon>Shop.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\Login.cs">
       <SubType>Form</SubType>
@@ -78,11 +91,17 @@
     <Compile Include="forms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\Shop.cs">
+    <Compile Include="forms\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\Shop.Designer.cs">
-      <DependentUpon>Shop.cs</DependentUpon>
+    <Compile Include="forms\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\TrangChuUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\TrangChuUserControl.Designer.cs">
+      <DependentUpon>TrangChuUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="qlxmDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -105,14 +124,23 @@
       <DependentUpon>RetakePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="entity\Users.cs" />
-    <EmbeddedResource Include="forms\Home.resx">
-      <DependentUpon>Home.cs</DependentUpon>
+    <EmbeddedResource Include="forms\KhachHangUserControl.resx">
+      <DependentUpon>KhachHangUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\SanPhamUserControl.resx">
+      <DependentUpon>SanPhamUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\Shop.resx">
+      <DependentUpon>Shop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\Shop.resx">
-      <DependentUpon>Shop.cs</DependentUpon>
+    <EmbeddedResource Include="forms\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\TrangChuUserControl.resx">
+      <DependentUpon>TrangChuUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
