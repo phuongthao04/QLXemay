@@ -9,7 +9,7 @@ namespace QLXeMay
 {
     internal class DatabaseUtils
     {
-        private static string stringConnection = "Data Source=MSI\\SQLEXPRESS;Initial Catalog=qlxm;Integrated Security=True;";
+        private static string stringConnection = "Data Source=DESKTOP-HQ4Q088\\SQLEXPRESS;Initial Catalog=qlxm;Integrated Security=True;Encrypt=False";
 
         public static SqlConnection connection()
         {

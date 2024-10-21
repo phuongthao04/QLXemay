@@ -36,11 +36,16 @@
     <Reference Include="BCrypt.Net-Next, Version=4.0.3.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
       <HintPath>..\packages\BCrypt.Net-Next.4.0.3\lib\net48\BCrypt.Net-Next.dll</HintPath>
     </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
     </Reference>
@@ -51,6 +56,7 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -67,6 +73,19 @@
     </Compile>
     <Compile Include="data-connection\ClassQLXM.cs" />
     <Compile Include="data-connection\DatabaseUtils.cs" />
+    <Compile Include="dto\MotoBikeDto.cs" />
+    <Compile Include="forms\AddMotoBikeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\AddMotoBikeForm.Designer.cs">
+      <DependentUpon>AddMotoBikeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\EditMotoBikeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\EditMotoBikeForm.Designer.cs">
+      <DependentUpon>EditMotoBikeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\KhachHangUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +127,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>qlxmDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="repository\MotoBikeRepository.cs" />
     <Compile Include="repository\UsersRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -124,6 +144,12 @@
       <DependentUpon>RetakePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="entity\Users.cs" />
+    <EmbeddedResource Include="forms\AddMotoBikeForm.resx">
+      <DependentUpon>AddMotoBikeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\EditMotoBikeForm.resx">
+      <DependentUpon>EditMotoBikeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\KhachHangUserControl.resx">
       <DependentUpon>KhachHangUserControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -261,5 +287,6 @@
   <ItemGroup>
     <None Include="Resources\settings2.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

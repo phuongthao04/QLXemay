@@ -119,7 +119,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(50, 448);
+            this.label1.Location = new System.Drawing.Point(95, 449);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(81, 25);
             this.label1.TabIndex = 2;
@@ -129,7 +129,7 @@
             // 
             this.pictureBox3.Image = global::QLXeMay.Properties.Resources.settings2;
             this.pictureBox3.InitialImage = global::QLXeMay.Properties.Resources.settings1;
-            this.pictureBox3.Location = new System.Drawing.Point(3, 440);
+            this.pictureBox3.Location = new System.Drawing.Point(25, 440);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(41, 43);
             this.pictureBox3.TabIndex = 1;
