@@ -132,5 +132,10 @@ namespace QLXeMay.forms
                 MessageBox.Show("Vui lòng chọn một xe máy để xóa.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void dvgSanPham_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

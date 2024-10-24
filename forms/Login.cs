@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QLXeMay.forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,25 +56,32 @@ namespace QLXeMay
         {
             string usernameTxt = username.Text;
             string passwordTxt = password.Text;
+
+            // Gọi phương thức validate
             validateEntry(usernameTxt, passwordTxt);
+
             string query = "select * from users " +
-                "where username = '" + usernameTxt + "' " +
-                "and passwrd = '" + passwordTxt + "'";
+                           "where username = '" + usernameTxt + "' " +
+                           "and passwrd = '" + passwordTxt + "'";
+
             if (usersRepository.users(query).Count > 0)
             {
-                MessageBox.Show("Đăng nhập thành công", "Thông báo", 
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
-            } else
-            {
-                MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Mở trang Home và ẩn trang Login
+                Home homeForm = new Home();
+                homeForm.Show();
+                this.Hide(); // Ẩn form Login
             }
-            Console.WriteLine("Any changes");
+            else
+            {
+                MessageBox.Show("Tên tài khoản hoặc mật khẩu không chính xác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void Login_Load(object sender, EventArgs e)
         {
-
+            password.PasswordChar = '*';
         }
     }
 }

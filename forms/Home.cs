@@ -16,7 +16,8 @@ namespace QLXeMay.forms
         public Home()
         {
             InitializeComponent();
-            trangChuUserControl1.BringToFront();
+            //trangChuUserControl1.BringToFront();
+            this.Size = new Size(1700, 1000);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -30,12 +31,44 @@ namespace QLXeMay.forms
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            sanPhamUserControl1.BringToFront();
+            sanPhamUserControl2.BringToFront();
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            khachHangUserControl1.BringToFront();
+            khachHangUserControl2.BringToFront();
+        }
+
+        private void profileControl1_Load(object sender, EventArgs e)
+        {
+            profileControl1.BringToFront();
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void UpdateProfilePicture(Image newImage)
+        {
+            pb1.Image = newImage;
+            pb1.SizeMode = PictureBoxSizeMode.Zoom;  // Đảm bảo ảnh tự động thu nhỏ/phóng to
+
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            this.Size = new Size(100,100);
+        }
+        private void OpenProfileControl()
+        {
+            // Tạo đối tượng ProfileControl
+            ProfileControl profileControl = new ProfileControl();
+
+            // Truyền ảnh từ PictureBox ở trang chủ sang ProfileControl
+            profileControl.SetProfilePicture(pb1.Image);
+
+            // Hiển thị ProfileControl
+            profileControl.Show();
         }
     }
 }

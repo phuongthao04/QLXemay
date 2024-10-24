@@ -31,6 +31,10 @@ namespace QLXeMay.forms
             dvgKhachHang.Columns[1].HeaderText = "Địa chỉ";        // Cột dia_chi
             dvgKhachHang.Columns[2].HeaderText = "Số điện thoại";
         }
-        
+
+        private void dvgKhachHang_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

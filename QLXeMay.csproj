@@ -92,6 +92,12 @@
     <Compile Include="forms\KhachHangUserControl.Designer.cs">
       <DependentUpon>KhachHangUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\ProfileControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="forms\ProfileControl.Designer.cs">
+      <DependentUpon>ProfileControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\SanPhamUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\KhachHangUserControl.resx">
       <DependentUpon>KhachHangUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\ProfileControl.resx">
+      <DependentUpon>ProfileControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SanPhamUserControl.resx">
       <DependentUpon>SanPhamUserControl.cs</DependentUpon>
