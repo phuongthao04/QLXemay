@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace QLXeMay.forms
 {
@@ -20,6 +21,7 @@ namespace QLXeMay.forms
             LoadTrangChuData();
             dtpDate.ValueChanged += new EventHandler(dtpDate_ValueChanged);
             LoadDoanhThuChart();
+            LoadXeBanChart();
             LoadKhachHangTrangChuData();
         }
 
@@ -153,15 +155,13 @@ namespace QLXeMay.forms
 
                     // Truy vấn doanh thu, số khách hàng và số hóa đơn theo từng ngày trong tuần hiện tại
                     string query = @"
-            SELECT 
-                CAST(ngay_mua AS DATE) AS Ngay, 
-                SUM(tong_tien) AS DoanhThu,
-                COUNT(DISTINCT id_kh) AS SoKhachHang,
-                COUNT(*) AS SoHoaDon
-            FROM don_dat_hang 
-            WHERE ngay_mua >= @startDate AND ngay_mua <= @endDate 
-            GROUP BY CAST(ngay_mua AS DATE)
-            ORDER BY Ngay";
+                    SELECT 
+                    CAST(ngay_mua AS DATE) AS Ngay, 
+                    SUM(tong_tien) AS DoanhThu
+                    FROM don_dat_hang 
+                    WHERE ngay_mua >= @startDate AND ngay_mua <= @endDate 
+                    GROUP BY CAST(ngay_mua AS DATE)
+                    ORDER BY Ngay";
 
                     SqlCommand cmd = new SqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@startDate", startOfWeek);
@@ -170,22 +170,64 @@ namespace QLXeMay.forms
                     SqlDataReader reader = cmd.ExecuteReader();
 
                     // Xóa các điểm dữ liệu hiện có trong chart
-                    chartDoanhThu.Series["DoanhThu"].Points.Clear();
-                    chartDoanhThu.Series["SoKhachHang"].Points.Clear();
-                    chartDoanhThu.Series["SoHoaDon"].Points.Clear();
+                    chartDoanhThu.Series["Doanh thu"].Points.Clear();
 
                     // Thêm dữ liệu vào biểu đồ
                     while (reader.Read())
                     {
                         DateTime ngay = reader.GetDateTime(0); // Ngày mua
                         decimal doanhThu = reader.IsDBNull(1) ? 0 : reader.GetDecimal(1); // Doanh thu
-                        int soKhachHang = reader.IsDBNull(2) ? 0 : reader.GetInt32(2); // Số khách hàng
-                        int soHoaDon = reader.IsDBNull(3) ? 0 : reader.GetInt32(3); // Số hóa đơn
 
                         // Thêm dữ liệu vào các series trong chart
-                        chartDoanhThu.Series["DoanhThu"].Points.AddXY(ngay.ToShortDateString(), doanhThu);
-                        chartDoanhThu.Series["SoKhachHang"].Points.AddXY(ngay.ToShortDateString(), soKhachHang);
-                        chartDoanhThu.Series["SoHoaDon"].Points.AddXY(ngay.ToShortDateString(), soHoaDon);
+                        chartDoanhThu.Series["Doanh thu"].Points.AddXY(ngay.ToString("dd/MM"), doanhThu);
+                    }
+
+                    reader.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+        }
+        private void LoadXeBanChart()
+        {
+            using (SqlConnection conn = DatabaseUtils.connection())
+            {
+                try
+                {
+                    conn.Open();
+
+                    string query = @"
+                SELECT k.ten_xe AS TenXe, SUM(ct.so_luong) AS SoLuongDaBan
+                FROM chi_tiet_ddh ct
+                JOIN don_dat_hang ddh ON ct.id_ddh = ddh.id_ddh
+                JOIN kho_hang k ON ct.id_xe = k.id_xe
+                GROUP BY k.ten_xe
+                ORDER BY SoLuongDaBan DESC;";
+
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    // Clear existing data in the chart
+                    chartSSXe.Series.Clear();
+
+                    // Add a new series for the doughnut chart
+                    Series series = new Series("XeBan")
+                    {
+                        ChartType = SeriesChartType.Doughnut,
+                        IsValueShownAsLabel = false // Hide labels on the chart itself
+                    };
+                    chartSSXe.Series.Add(series);
+
+                    // Add data points to the series
+                    while (reader.Read())
+                    {
+                        string tenXe = reader.GetString(0);           // Model name
+                        int soLuongDaBan = reader.GetInt32(1);        // Quantity sold
+
+                        // Add each bike model and quantity sold to the chart
+                        series.Points.AddXY(tenXe, soLuongDaBan);
                     }
 
                     reader.Close();
