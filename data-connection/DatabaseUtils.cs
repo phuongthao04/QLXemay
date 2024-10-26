@@ -9,7 +9,7 @@ namespace QLXeMay
 {
     internal class DatabaseUtils
     {
-        private static string stringConnection = "Data Source=TAHO\\SQLEXPRESS;Initial Catalog=QLXeMay;Integrated Security=True;Encrypt=False";
+        private static string stringConnection = "Data Source=DESKTOP-70M2N92;Initial Catalog=qlxm;Integrated Security=True;";
 
         public static SqlConnection connection()
         {

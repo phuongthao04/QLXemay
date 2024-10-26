@@ -17,7 +17,7 @@ namespace QLXeMay.forms
         {
             InitializeComponent();
             //trangChuUserControl1.BringToFront();
-            this.Size = new Size(1700, 1000);
+            //this.Size = new Size(1700, 1000);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -69,6 +69,30 @@ namespace QLXeMay.forms
 
             // Hiển thị ProfileControl
             profileControl.Show();
+        }
+
+        private void btnTrangChu_Click(object sender, EventArgs e)
+        {
+            trangChuUserControl2.BringToFront();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            donHangUserControl1.BringToFront();
+        }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            var result = MessageBox.Show("Bạn có chắc chắn muốn thoát không?", "Xác nhận thoát", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                //Close Current Form
+                this.Hide();
+                //Open Form Login
+                Login loginForm = new Login();
+                loginForm.Show();
+            }
         }
     }
 }
