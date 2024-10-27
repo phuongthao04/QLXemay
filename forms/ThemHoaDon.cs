@@ -71,6 +71,32 @@ namespace QLXeMay.forms
                 }
             }
         }
+        private void LoadTenLoai(int idXe)
+        {
+            using (SqlConnection conn = DatabaseUtils.connection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT p.id_phanh, p.ten_phanh FROM phanh_xe p INNER JOIN kho_hang k ON p.id_phanh = k.id_phanh WHERE k.id_xe = @idXe";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@idXe", idXe);
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    cbbLoaiXe.Items.Clear();
+                    while (reader.Read())
+                    {
+                        cbbLoaiXe.Items.Add(new { Text = reader["ten_phanh"].ToString(), Value = reader["id_phanh"] });
+                    }
+                    cbbLoaiXe.DisplayMember = "Text";
+                    cbbLoaiXe.ValueMember = "Value";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi: " + ex.Message);
+                }
+            }
+        }
         private void LoadTinhTrang(int idXe)
         {
             using (SqlConnection conn = DatabaseUtils.connection())
@@ -125,19 +151,6 @@ namespace QLXeMay.forms
                 }
             }
         }
-
-        private decimal CalculateTongTien()
-        {
-            decimal total = 0;
-            foreach (var item in lbDanhSachMua.Items)
-            {
-                // Assuming your item format includes the price as the last element, adjust as needed
-                string[] details = item.ToString().Split('-');
-                decimal thanhTien = decimal.Parse(details[details.Length - 1].Split(':')[1].Trim()); // Adjust according to your format
-                total += thanhTien;
-            }
-            return total;
-        }
         public int? GetMaXeByTenVaMau(string tenXe)
         {
             using (SqlConnection conn = DatabaseUtils.connection())
@@ -180,9 +193,65 @@ namespace QLXeMay.forms
                 }
             }
         }
+        public int? GetTinhTrang(string tinhTrang)
+        {
+            using (SqlConnection conn = DatabaseUtils.connection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT id_tt FROM tinh_trang WHERE ten_TT = @tenTinhTrang";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@tenTinhTrang", tinhTrang);
 
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int idTinhTrang))
+                    {
+                        return idTinhTrang;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Không tìm thấy mã tình trạng '{tinhTrang}'.");
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi truy vấn mã tình trạng: " + ex.Message);
+                    return null;
+                }
+            }
+        }
 
+        public int? GetLoaiXe(string loaiXe)
+        {
+            using (SqlConnection conn = DatabaseUtils.connection())
+            {
+                try
+                {
+                    conn.Open();
+                    string query = "SELECT id_phanh FROM phanh_xe WHERE ten_phanh = @tenLoaiXe";
+                    SqlCommand cmd = new SqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@tenLoaiXe", loaiXe);
 
+                    var result = cmd.ExecuteScalar();
+                    if (result != null && int.TryParse(result.ToString(), out int idLoaiXe))
+                    {
+                        return idLoaiXe;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Không tìm thấy mã loại xe '{loaiXe}'.");
+                        return null;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi truy vấn mã loại xe: " + ex.Message);
+                    return null;
+                }
+            }
+        }
 
 
         private int? GetOrInsertKhachHang(string tenKH, string diaChi, string soDT)
@@ -277,8 +346,8 @@ namespace QLXeMay.forms
             {
                 // Tách thông tin từ item nếu cần thiết
                 string[] details = item.ToString().Split('-');
-                string tenXe = details[3].Split(':')[1].Trim();
-                int soLuong = int.Parse(details[5].Split(':')[1].Trim().Split(' ')[0]); // lấy số lượng từ chuỗi
+                string tenXe = details[3].Trim();
+                int soLuong = int.Parse(details[5].Trim());
 
                 // Gọi hàm để cập nhật kho hàng
                 UpdateSoLuongKhoHang(tenXe, soLuong);
@@ -420,6 +489,18 @@ namespace QLXeMay.forms
                 return;
             }
 
+            if (cbbTinhTrang.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn tình trạng.");
+                return;
+            }
+
+            if (cbbLoaiXe.SelectedItem == null)
+            {
+                MessageBox.Show("Vui lòng chọn loại xe.");
+                return;
+            }
+
             // Chỉ khai báo soLuong một lần
             if (!int.TryParse(txtSoLuong.Text, out int soLuong) || soLuong <= 0)
             {
@@ -441,9 +522,10 @@ namespace QLXeMay.forms
                 string diaChi = txtDiaChi.Text;
                 string soDienThoai = txtSDT.Text;
                 DateTime ngayMua = dtpDate.Value;
-
+                var selectedTinhTrang = (dynamic)cbbTinhTrang.SelectedItem;
+                var selectedLoatXe = (dynamic)cbbLoaiXe.SelectedItem;
                 // Tạo chuỗi hiển thị trong ListBox bao gồm tên khách hàng, địa chỉ, số điện thoại, tên xe, màu sắc, số lượng và ngày mua
-                string itemText = $"Khách hàng: {tenKhachHang} - Địa chỉ: {diaChi} - SĐT: {soDienThoai} - Xe: {selectedXe.Text} - Màu: {selectedMau.Text} - Số lượng: {soLuong} chiếc - Ngày mua: {ngayMua.ToShortDateString()}";
+                string itemText = $"{tenKhachHang} - {diaChi} - {soDienThoai} - {selectedXe.Text} - {selectedMau.Text} - {soLuong} - {ngayMua.ToShortDateString()} - {selectedTinhTrang.Text} - {selectedLoatXe.Text}";
                 lbDanhSachMua.Items.Add(itemText);
             }
             else
@@ -454,10 +536,11 @@ namespace QLXeMay.forms
 
         private void btnHoanThanh_Click(object sender, EventArgs e)
         {
+            // Kiểm tra thông tin cần thiết trước khi xử lý
             if (string.IsNullOrWhiteSpace(txtTenKH.Text) ||
-        string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
-        string.IsNullOrWhiteSpace(txtSDT.Text) ||
-        lbDanhSachMua.Items.Count == 0)
+                string.IsNullOrWhiteSpace(txtDiaChi.Text) ||
+                string.IsNullOrWhiteSpace(txtSDT.Text) ||
+                lbDanhSachMua.Items.Count == 0)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin khách hàng và danh sách mua.");
                 return;
@@ -472,20 +555,22 @@ namespace QLXeMay.forms
                 decimal datCoc = 0; // Đặt cọc mặc định là 0
                 decimal tongTien = 0; // Khởi tạo tổng tiền
 
-                // Lặp qua từng item trong danh sách mua
+                // Lặp qua từng item trong ListBox và thực hiện thêm vào SQL
                 foreach (var item in lbDanhSachMua.Items)
                 {
-                    // Tách thông tin từ item
                     string[] details = item.ToString().Split('-');
-                    string tenXe = details[3].Split(':')[1].Trim(); // Lấy tên xe từ chuỗi
-                    string mauSac = details[4].Split(':')[1].Trim(); // Lấy màu sắc từ chuỗi
-                    int soLuong = int.Parse(details[5].Split(':')[1].Trim().Split(' ')[0]); // Lấy số lượng từ chuỗi
+                    string tenXe = details[3].Trim();
+                    string mauSac = details[4].Trim();
+                    int soLuong = int.Parse(details[5].Trim());
+                    string tinhTrang = details[7].Trim();
+                    string loaiXe = details[8].Trim();
 
-                    // Tìm MaXe và MaMau dựa trên tenXe và mauSac
                     int? maXe = GetMaXeByTenVaMau(tenXe);
                     int? maMau = GetMaMauByTenXeAndMau(mauSac);
+                    int? maTT = GetTinhTrang(tinhTrang);
+                    int? maLX = GetLoaiXe(loaiXe);
 
-                    if (maXe.HasValue && maMau.HasValue)
+                    if (maXe.HasValue && maMau.HasValue && maTT.HasValue && maLX.HasValue)
                     {
                         decimal thanhTien = CalculateThanhTien(maXe.Value, soLuong); // Tính thành tiền
                         tongTien += thanhTien; // Cộng dồn tổng tiền
@@ -500,9 +585,9 @@ namespace QLXeMay.forms
                         return;
                     }
                 }
-                DataUpdated?.Invoke(this, EventArgs.Empty);
-                // Cập nhật lại kho hàng
-                UpdateKhoHang();
+
+                DataUpdated?.Invoke(this, EventArgs.Empty); // Cập nhật dữ liệu
+                UpdateKhoHang(); // Cập nhật kho hàng
 
                 // Thoát khỏi form
                 this.Close();
@@ -529,6 +614,7 @@ namespace QLXeMay.forms
                 selectedXeId = selectedXe.Value; // Lưu ID xe đã chọn
                 LoadMauSac(selectedXeId.Value); // Nạp màu sắc dựa trên id_xe đã chọn
                 LoadTinhTrang(selectedXeId.Value);
+                LoadTenLoai(selectedXeId.Value);
             }
         }
     }

@@ -33,16 +33,18 @@ namespace QLXeMay.forms
                     conn.Open();
 
                     string query = @"
-            SELECT ddh.id_ddh AS N'Mã đơn hàng', 
-                   kh.ten_kh AS N'Tên khách hàng', 
-                   ctddh.so_luong AS N'Số lượng', 
-                   ddh.ngay_mua AS N'Ngày mua', 
-                   (ctddh.so_luong * khb.gia_ban) AS N'Tổng tiền' 
-            FROM don_dat_hang ddh
-            INNER JOIN khach_hang kh ON ddh.id_kh = kh.id_kh
-            INNER JOIN chi_tiet_ddh ctddh ON ddh.id_ddh = ctddh.id_ddh
-            INNER JOIN kho_hang khb ON ctddh.id_xe = khb.id_xe 
-            ORDER BY ddh.ngay_mua DESC"; // Sắp xếp theo ngày mua giảm dần
+SELECT ddh.id_ddh AS N'Mã đơn hàng', 
+       kh.ten_kh AS N'Tên khách hàng', 
+       ctddh.so_luong AS N'Số lượng', 
+       ddh.ngay_mua AS N'Ngày mua', 
+	   nv.ten_nv AS N'Tên nhân viên',
+       (ctddh.so_luong * khb.gia_ban) AS N'Tổng tiền' 
+FROM don_dat_hang ddh
+INNER JOIN khach_hang kh ON ddh.id_kh = kh.id_kh
+INNER JOIN chi_tiet_ddh ctddh ON ddh.id_ddh = ctddh.id_ddh
+INNER JOIN kho_hang khb ON ctddh.id_xe = khb.id_xe 
+INNER JOIN nhan_vien nv ON nv.id_nv = ddh.id_nv 
+ORDER BY ddh.ngay_mua DESC";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
