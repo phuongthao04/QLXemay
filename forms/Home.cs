@@ -20,7 +20,9 @@ namespace QLXeMay.forms
             InitializeComponent();
             trangChuUserControl2.BringToFront();
             this.userId = userId;
-            this.Size = new Size(1500, 900);
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.MaximizeBox = true;
+            this.MinimizeBox = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
