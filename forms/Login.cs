@@ -69,7 +69,6 @@ namespace QLXeMay
 			if (result.Count > 0)
 			{
 				int userId = result[0].UserId;
-				MessageBox.Show(userId.ToString());
 				MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 				// Open the Home form and hide the Login form

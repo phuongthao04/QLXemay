@@ -15,32 +15,18 @@ namespace QLXeMay.forms
 {
     public partial class ProfileControl : UserControl
     {
-        public ProfileControl()
+        private int userID;
+        public ProfileControl( int userID)
         {
             InitializeComponent();
             lblUserName.Text = "HARRY KANE";
+            this.userID = userID; // Gán userID cho biến toàn cục
             lblUserName.Font = new Font("Arial", 14, FontStyle.Bold);
             buttonSaveImage.Click += new EventHandler(SaveImage_Click);
+            LoadUserInfo(userID);
         }
         private void SaveImage_Click(object sender, EventArgs e)
         {
-            //// Kiểm tra xem PictureBox có ảnh hay không
-            //if (pictureBox1.Image == null)
-            //{
-            //    MessageBox.Show("Vui lòng chọn ảnh trước khi lưu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return; // Dừng việc lưu nếu chưa có ảnh
-            //}
-
-            //// Nếu có ảnh, tiến hành lưu ảnh
-            //Image selectedImage = pictureBox1.Image;
-
-            //// Thực hiện các thao tác lưu ảnh vào cơ sở dữ liệu hoặc file...
-
-            //// Đồng bộ ảnh với PictureBox ở trang chủ
-            //Home mainForm = (Home)this.ParentForm;
-            //mainForm.UpdateProfilePicture(selectedImage);
-
-            //MessageBox.Show("Ảnh đã được lưu và đồng bộ với trang chủ!");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,39 +40,53 @@ namespace QLXeMay.forms
         }
         public void SetUserInfo(Dictionary<string, object> userInfo)
         {
-            if (userInfo != null)
-            {
-                txtFirstName.Text = userInfo["FirstName"].ToString();
-                txtLastName.Text = userInfo["LastName"].ToString();
-                txtPhoneNumber.Text = userInfo["PhoneNumber"].ToString();
-                txtEmail.Text = userInfo["Email"].ToString();
-                txtDateOfBirth.Text = userInfo["DateOfBirth"].ToString();
+        }
+        public void LoadUserInfo(int userID)
+        {
+            string query = @"SELECT u.user_id, u.username, u.email, u.phoneNumber, 
+                                    nv.id_nv, nv.ten_nv, nv.ngay_sinh
+                             FROM users u JOIN nhan_vien nv ON u.id_nv = nv.id_nv
+                             WHERE u.id_nv = @userID";
 
+            using (SqlConnection conn = DatabaseUtils.connection())
+            {
+                SqlCommand cmd = new SqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@userID", userID);
+
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        lblUserName.Text = reader["ten_nv"].ToString();
+                        txtFullName.Text = reader["ten_nv"].ToString();
+                        txtPhoneNumber.Text = reader["phoneNumber"].ToString();
+                        txtEmail.Text = reader["email"].ToString();
+                        txtDateOfBirth.Text = DateTime.TryParse(reader["ngay_sinh"].ToString(), out DateTime dob)
+                            ? dob.ToString("dd/MM/yyyy")
+                            : "Ngày không hợp lệ";                        // Thêm các thông tin khác nếu cần
+                    }
+                    else
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin người dùng.");
+                    }
+                }
             }
         }
+
         private void button1_Click_1(object sender, EventArgs e)
         {
-            lblUserName.Text = $"{txtFirstName.Text} {txtLastName.Text}";
-            string firstName = txtFirstName.Text.Trim();
-            string lastName = txtLastName.Text.Trim();
+            lblUserName.Text = txtFullName.Text;
+            string fullName = txtFullName.Text.Trim();
             string passWord = txtPassWord.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phoneNumber = txtPhoneNumber.Text.Trim();
             string dateOfBirth = txtDateOfBirth.Text.Trim();
 
-            // Tạo username từ firstName và lastName
-            string username = (firstName + lastName).ToLower(); // Chuyển tất cả thành chữ thường
-
             // Kiểm tra dữ liệu
-            if (string.IsNullOrEmpty(firstName))
+            if (string.IsNullOrEmpty(fullName))
             {
-                MessageBox.Show("First Name không được để trống.");
-                return;
-            }
-
-            if (string.IsNullOrEmpty(lastName))
-            {
-                MessageBox.Show("Last Name không được để trống.");
+                MessageBox.Show("Fullname không được để trống.");
                 return;
             }
 
@@ -108,9 +108,9 @@ namespace QLXeMay.forms
                 return;
             }
 
-            if (!IsValidDateOfBirth(dateOfBirth))
+            if (!DateTime.TryParseExact(dateOfBirth, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime parsedDate))
             {
-                MessageBox.Show("Ngày sinh không hợp lệ.");
+                MessageBox.Show("Ngày sinh không hợp lệ. Vui lòng nhập ngày theo định dạng dd/MM/yyyy.");
                 return;
             }
 
@@ -120,47 +120,32 @@ namespace QLXeMay.forms
                 {
                     conn.Open();
 
-                    // Kiểm tra xem username có tồn tại trong cơ sở dữ liệu
-                    string checkQuery = "SELECT COUNT(*) FROM users WHERE username = @username";
-                    using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                    // Câu lệnh SQL UPDATE để cập nhật thông tin người dùng trong bảng users và nhan_vien
+                    string updateUsersQuery = "UPDATE users SET passwrd = @passwrd, email = @Email, phoneNumber = @phoneNumber WHERE user_id = @userID";
+                    string updateNhanVienQuery = "UPDATE nhan_vien SET ten_nv = @ten_nv, ngay_sinh = @ngay_sinh WHERE id_nv = @id_nv";
+
+                    // Cập nhật thông tin trong bảng `users`
+                    using (SqlCommand cmd = new SqlCommand(updateUsersQuery, conn))
                     {
-                        checkCmd.Parameters.AddWithValue("@username", username);
-                        int userCount = (int)checkCmd.ExecuteScalar();
-
-                        if (userCount == 0)
-                        {
-                            MessageBox.Show("Không tìm thấy người dùng với username này.");
-                            return; // Nếu không tìm thấy user, dừng lại
-                        }
-                    }
-
-                    // Câu lệnh SQL UPDATE để cập nhật thông tin người dùng
-                    string updateQuery = "UPDATE users SET firstName = @firstName, lastName = @lastName, passwrd = @passwrd, email = @Email, phoneNumber = @phoneNumber, dateOfBirth = @dateOfBirth " +
-                                         "WHERE username = @username";
-
-                    using (SqlCommand cmd = new SqlCommand(updateQuery, conn))
-                    {
-                        // Thêm tham số vào truy vấn
-                        cmd.Parameters.AddWithValue("@firstName", firstName);
-                        cmd.Parameters.AddWithValue("@lastName", lastName);
                         cmd.Parameters.AddWithValue("@passwrd", passWord);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@phoneNumber", phoneNumber);
-                        cmd.Parameters.AddWithValue("@dateOfBirth", Convert.ToDateTime(dateOfBirth)); // Chuyển đổi ngày sinh sang DateTime
-                        cmd.Parameters.AddWithValue("@username", username); // Không thay đổi username
+                        cmd.Parameters.AddWithValue("@userID", this.userID);
 
-                        // Thực thi lệnh
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Cập nhật thông tin thành công!");
-                        }
-                        else
-                        {
-                            MessageBox.Show("Không thể cập nhật thông tin người dùng.");
-                        }
+                        cmd.ExecuteNonQuery();
                     }
+
+                    // Cập nhật thông tin trong bảng `nhan_vien`
+                    using (SqlCommand cmd = new SqlCommand(updateNhanVienQuery, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@ten_nv", fullName);
+                        cmd.Parameters.AddWithValue("@ngay_sinh", parsedDate); // Sử dụng parsedDate thay vì Convert.ToDateTime
+                        cmd.Parameters.AddWithValue("@id_nv", this.userID); // giả sử `id_nv` và `userID` trùng nhau
+
+                        cmd.ExecuteNonQuery();
+                    }
+
+                    MessageBox.Show("Cập nhật thông tin thành công!");
                 }
             }
             catch (SqlException sqlEx)
@@ -177,9 +162,9 @@ namespace QLXeMay.forms
             Home mainForm = (Home)this.ParentForm;
             mainForm.UpdateProfilePicture(updatedProfilePicture);
         }
-        private bool IsValidFirstName(string firstName)
+        private bool IsValidFullName(string fullName)
         {
-            return Regex.IsMatch(firstName, @"^[a-zA-Z]+$");
+            return Regex.IsMatch(fullName, @"^[a-zA-Z]+$");
         }
         private bool IsValidPassword(string password)
         {
@@ -187,11 +172,6 @@ namespace QLXeMay.forms
             string pattern = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{6,}$";
             return Regex.IsMatch(password, pattern);
         }
-        private bool IsValidLastName(string lastName)
-        {
-            return Regex.IsMatch(lastName, @"^[a-zA-Z]+$");
-        }
-
         private bool IsValidPhoneNumber(string phoneNumber)
         {
             return Regex.IsMatch(phoneNumber, @"^0\d{9}$");
@@ -223,7 +203,7 @@ namespace QLXeMay.forms
         }
         private void UpdateNameLabel(object sender, EventArgs e)
         {
-            lblUserName.Text = $"{txtFirstName.Text} {txtLastName.Text}";
+            lblUserName.Text = txtFullName.Text;
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

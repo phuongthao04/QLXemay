@@ -20,7 +20,7 @@ namespace QLXeMay.forms
             InitializeComponent();
             trangChuUserControl2.BringToFront();
             this.userId = userId;
-            //this.Size = new Size(1700, 1000);
+            this.Size = new Size(1500, 900);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -65,7 +65,7 @@ namespace QLXeMay.forms
         private void OpenProfileControl()
         {
             // Tạo đối tượng ProfileControl
-            ProfileControl profileControl = new ProfileControl();
+            ProfileControl profileControl = new ProfileControl(1);
 
             // Truyền ảnh từ PictureBox ở trang chủ sang ProfileControl
             profileControl.SetProfilePicture(pb1.Image);
@@ -119,5 +119,10 @@ namespace QLXeMay.forms
 		{
 
 		}
-	}
+
+        private void profileControl4_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
