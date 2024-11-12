@@ -11,7 +11,7 @@ namespace QLXeMay.data_connection
 {
     class ClassQLXM
     {
-        public SqlConnection con = new SqlConnection("Data Source=TAHO\\SQLEXPRESS;Initial Catalog=qlxm;Integrated Security=True;Encrypt=False;");
+        public SqlConnection con = new SqlConnection("Data Source=DESKTOP-HQ4Q088\\SQLEXPRESS;Initial Catalog=qlxm;Integrated Security=True;Encrypt=False");
         public DataTable taobang(string sql)
         {
             con.Open();
