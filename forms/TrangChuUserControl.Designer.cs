@@ -39,21 +39,21 @@
 			System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
 			this.dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
 			this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+			this.label5 = new System.Windows.Forms.Label();
 			this.lblSoKhachHang = new Guna.UI2.WinForms.Guna2HtmlLabel();
 			this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+			this.label1 = new System.Windows.Forms.Label();
 			this.lblSoSP = new Guna.UI2.WinForms.Guna2HtmlLabel();
 			this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+			this.label6 = new System.Windows.Forms.Label();
 			this.lblSoDH = new Guna.UI2.WinForms.Guna2HtmlLabel();
 			this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
 			this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+			this.label7 = new System.Windows.Forms.Label();
 			this.lblDoanhSoHT = new Guna.UI2.WinForms.Guna2HtmlLabel();
 			this.dtbKhachHangTrangChu = new Guna.UI2.WinForms.Guna2DataGridView();
 			this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
 			this.chartSSXe = new System.Windows.Forms.DataVisualization.Charting.Chart();
-			this.label5 = new System.Windows.Forms.Label();
-			this.label1 = new System.Windows.Forms.Label();
-			this.label6 = new System.Windows.Forms.Label();
-			this.label7 = new System.Windows.Forms.Label();
 			this.guna2Panel1.SuspendLayout();
 			this.guna2Panel2.SuspendLayout();
 			this.guna2Panel3.SuspendLayout();
@@ -81,7 +81,7 @@
 			// 
 			// guna2Panel1
 			// 
-			this.guna2Panel1.BackColor = System.Drawing.Color.White;
+			this.guna2Panel1.BackColor = System.Drawing.SystemColors.Control;
 			this.guna2Panel1.BorderRadius = 10;
 			this.guna2Panel1.Controls.Add(this.label5);
 			this.guna2Panel1.Controls.Add(this.lblSoKhachHang);
@@ -91,6 +91,17 @@
 			this.guna2Panel1.Name = "guna2Panel1";
 			this.guna2Panel1.Size = new System.Drawing.Size(269, 114);
 			this.guna2Panel1.TabIndex = 1;
+			// 
+			// label5
+			// 
+			this.label5.AutoSize = true;
+			this.label5.BackColor = System.Drawing.Color.White;
+			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+			this.label5.Location = new System.Drawing.Point(63, 28);
+			this.label5.Name = "label5";
+			this.label5.Size = new System.Drawing.Size(132, 20);
+			this.label5.TabIndex = 10;
+			this.label5.Text = "Số khách hàng";
 			// 
 			// lblSoKhachHang
 			// 
@@ -115,6 +126,17 @@
 			this.guna2Panel2.Size = new System.Drawing.Size(269, 114);
 			this.guna2Panel2.TabIndex = 4;
 			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.BackColor = System.Drawing.Color.White;
+			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+			this.label1.Location = new System.Drawing.Point(77, 28);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(118, 20);
+			this.label1.TabIndex = 11;
+			this.label1.Text = "Số sản phẩm";
+			// 
 			// lblSoSP
 			// 
 			this.lblSoSP.BackColor = System.Drawing.Color.Transparent;
@@ -138,6 +160,17 @@
 			this.guna2Panel3.Name = "guna2Panel3";
 			this.guna2Panel3.Size = new System.Drawing.Size(269, 114);
 			this.guna2Panel3.TabIndex = 5;
+			// 
+			// label6
+			// 
+			this.label6.AutoSize = true;
+			this.label6.BackColor = System.Drawing.Color.White;
+			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+			this.label6.Location = new System.Drawing.Point(83, 28);
+			this.label6.Name = "label6";
+			this.label6.Size = new System.Drawing.Size(113, 20);
+			this.label6.TabIndex = 12;
+			this.label6.Text = "Số đơn hàng";
 			// 
 			// lblSoDH
 			// 
@@ -172,6 +205,17 @@
 			this.guna2Panel4.Name = "guna2Panel4";
 			this.guna2Panel4.Size = new System.Drawing.Size(269, 114);
 			this.guna2Panel4.TabIndex = 6;
+			// 
+			// label7
+			// 
+			this.label7.AutoSize = true;
+			this.label7.BackColor = System.Drawing.Color.White;
+			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+			this.label7.Location = new System.Drawing.Point(52, 28);
+			this.label7.Name = "label7";
+			this.label7.Size = new System.Drawing.Size(167, 20);
+			this.label7.TabIndex = 13;
+			this.label7.Text = "Doanh số hệ thống";
 			// 
 			// lblDoanhSoHT
 			// 
@@ -271,50 +315,6 @@
 			this.chartSSXe.Size = new System.Drawing.Size(397, 211);
 			this.chartSSXe.TabIndex = 9;
 			this.chartSSXe.Text = "chart1";
-			// 
-			// label5
-			// 
-			this.label5.AutoSize = true;
-			this.label5.BackColor = System.Drawing.Color.White;
-			this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-			this.label5.Location = new System.Drawing.Point(63, 28);
-			this.label5.Name = "label5";
-			this.label5.Size = new System.Drawing.Size(132, 20);
-			this.label5.TabIndex = 10;
-			this.label5.Text = "Số khách hàng";
-			// 
-			// label1
-			// 
-			this.label1.AutoSize = true;
-			this.label1.BackColor = System.Drawing.Color.White;
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-			this.label1.Location = new System.Drawing.Point(77, 28);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(118, 20);
-			this.label1.TabIndex = 11;
-			this.label1.Text = "Số sản phẩm";
-			// 
-			// label6
-			// 
-			this.label6.AutoSize = true;
-			this.label6.BackColor = System.Drawing.Color.White;
-			this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-			this.label6.Location = new System.Drawing.Point(83, 28);
-			this.label6.Name = "label6";
-			this.label6.Size = new System.Drawing.Size(113, 20);
-			this.label6.TabIndex = 12;
-			this.label6.Text = "Số đơn hàng";
-			// 
-			// label7
-			// 
-			this.label7.AutoSize = true;
-			this.label7.BackColor = System.Drawing.Color.White;
-			this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-			this.label7.Location = new System.Drawing.Point(52, 28);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(167, 20);
-			this.label7.TabIndex = 13;
-			this.label7.Text = "Doanh số hệ thống";
 			// 
 			// TrangChuUserControl
 			// 

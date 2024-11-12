@@ -14,12 +14,14 @@ namespace QLXeMay.forms
     public partial class ThemHoaDon : Form
     {
         public event EventHandler DataUpdated;
-        int idnv = 1;
+        int idnv;
         private int? selectedXeId = null;
-        public ThemHoaDon()
+        public ThemHoaDon(int UserID)
         {
             InitializeComponent();
-        }
+
+			this.idnv = UserID;
+		}
         private void LoadTenXe()
         {
             using (SqlConnection conn = DatabaseUtils.connection())

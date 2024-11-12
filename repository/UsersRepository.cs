@@ -14,7 +14,31 @@ namespace QLXeMay
 
         public UsersRepository() { }
 
-        public List<Users> users(string query)
+
+		public List<Users> GetUserByCredentials(string query, string username, string password)
+		{
+			var users = new List<Users>();
+			using (SqlConnection sqlConnection = DatabaseUtils.connection())
+			{
+				SqlCommand cmd = new SqlCommand(query, sqlConnection);
+				cmd.Parameters.AddWithValue("@username", username);
+				cmd.Parameters.AddWithValue("@password", password);
+
+				sqlConnection.Open();
+				using (SqlDataReader reader = cmd.ExecuteReader())
+				{
+					while (reader.Read())
+					{
+						users.Add(new Users
+						{
+							UserId = reader.GetInt32(reader.GetOrdinal("user_id"))
+						});
+					}
+				}
+			}
+			return users;
+		}
+		public List<Users> users(string query)
         {
             List<Users> users = new List<Users>();
 

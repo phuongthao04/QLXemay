@@ -13,7 +13,8 @@ namespace QLXeMay.forms
 {
     public partial class DonHangUserControl : UserControl
     {
-        private void Form_DataUpdated(object sender, EventArgs e)
+		public int UserID { get; set; }
+		private void Form_DataUpdated(object sender, EventArgs e)
         {
             LoadKhachHangDonHangData(); // Gọi phương thức cập nhật dữ liệu
         }
@@ -147,7 +148,7 @@ ORDER BY ddh.ngay_mua DESC";
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            ThemHoaDon themHoaDonForm = new ThemHoaDon();
+            ThemHoaDon themHoaDonForm = new ThemHoaDon(UserID);
             themHoaDonForm.DataUpdated += Form_DataUpdated;
             themHoaDonForm.ShowDialog();
         }

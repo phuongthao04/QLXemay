@@ -20,7 +20,7 @@ namespace QLXeMay.forms
             InitializeComponent();
             trangChuUserControl2.BringToFront();
             this.userId = userId;
-            this.Size = new Size(1700, 1000);
+            //this.Size = new Size(1700, 1000);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -81,7 +81,9 @@ namespace QLXeMay.forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            donHangUserControl1.BringToFront();
+			this.userId = userId;
+			donHangUserControl1.UserID = userId;
+			donHangUserControl1.BringToFront();
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -112,5 +114,10 @@ namespace QLXeMay.forms
         {
 
         }
-    }
+
+		private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+		{
+
+		}
+	}
 }
