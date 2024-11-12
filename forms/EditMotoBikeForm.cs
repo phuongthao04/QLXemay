@@ -22,8 +22,15 @@ namespace QLXeMay.forms
         public int IdTinhTrang { get; private set; }
         public int IdNSX { get; private set; }
         public int IdPhanh { get; private set; }
+        public string TenLoai { get; private set; }
+        public string DongCo { get; private set; }
+        public string Mau { get; private set; }
+        public string TinhTrang { get; private set; }
+        public string TenNSX { get; private set; }
+        public string Phanh { get; private set; }
         public decimal GiaBan { get; private set; }
         public decimal GiaNhap { get; private set; }
+        public int SoLuong { get; private set; }
 
         private MotoBikeRepository motoBikeRepo = new MotoBikeRepository();
 
@@ -37,15 +44,16 @@ namespace QLXeMay.forms
             // Gán các ComboBox với giá trị ID
             txtGiaBan.Text = moto.GiaBan.ToString();
             txtGiaNhap.Text = moto.GiaNhap.ToString();
+            txtSoLuong.Text = moto.SoLuong.ToString();
             txtTenXe.ReadOnly = true;
             txtGiaBan.ReadOnly = true;
             txtGiaNhap.ReadOnly = true;
-            cboLoai.SelectedValue = moto.IdLoai;
-            cboDongCo.SelectedValue = moto.IdDongCo;
-            cboMau.SelectedValue = moto.IdMau;
-            cboTinhTrang.SelectedValue = moto.IdTinhTrang;
-            cboNSX.SelectedValue = moto.IdNSX;
-            cboPhanh.SelectedValue = moto.IdPhanh;
+            cboLoai.SelectedIndex = cboLoai.FindStringExact(moto.TenLoai);
+            cboDongCo.SelectedIndex = cboDongCo.FindStringExact(moto.DongCo);
+            cboMau.SelectedIndex = cboMau.FindStringExact(moto.Mau);
+            cboTinhTrang.SelectedIndex = cboTinhTrang.FindStringExact(moto.TinhTrang);
+            cboNSX.SelectedIndex = cboNSX.FindStringExact(moto.TenNSX);
+            cboPhanh.SelectedIndex = cboPhanh.FindStringExact(moto.Phanh);
         }
 
         private DataTable GetComboBoxData(string query)
@@ -98,9 +106,15 @@ namespace QLXeMay.forms
             IdPhanh = (int)cboPhanh.SelectedValue;
             GiaBan = decimal.Parse(txtGiaBan.Text);
             GiaNhap = decimal.Parse(txtGiaNhap.Text);
+            SoLuong = int.Parse(txtSoLuong.Text);
 
             DialogResult = DialogResult.OK;
             Close();
+        }
+
+        private void EditMotoBikeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 

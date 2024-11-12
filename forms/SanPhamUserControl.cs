@@ -16,6 +16,8 @@ namespace QLXeMay.forms
     public partial class SanPhamUserControl : UserControl
     {
         private MotoBikeRepository motoBikeRepo = new MotoBikeRepository();
+        private HoaDonNhapRepo HoaDonNhapRepo = new HoaDonNhapRepo();
+        private ChiTietHDNRepo ChiTietHDNRepo = new ChiTietHDNRepo();
         public SanPhamUserControl()
         {
             InitializeComponent();
@@ -31,10 +33,32 @@ namespace QLXeMay.forms
 
         private void SanPhamUserControl_Load(object sender, EventArgs e)
         {
-            string query = "SELECT \r\n    kho_hang.ten_xe,\r\n    the_loai.ten_loai ,\r\n    dong_co.ten_dc ,\r\n   " +
-                " mau_sac.ten_mau,\r\n    tinh_trang.ten_TT ,\r\n    nha_san_xuat.ten_nsx ,\r\n    phanh_xe.ten_phanh ,\r\n    kho_hang.gia_ban,\r\n    kho_hang.gia_nhap \r\nFROM \r\n    kho_hang\r\nJOIN \r\n    the_loai ON kho_hang.id_loai = the_loai.id_loai\r\nJOIN \r\n    " +
-                "dong_co ON kho_hang.id_dc = dong_co.id_dongco\r\nJOIN \r\n    mau_sac ON kho_hang.id_mau = mau_sac.id_mau\r\nJOIN \r\n    tinh_trang ON kho_hang.id_tt = tinh_trang.id_tt\r\nJOIN \r\n    nha_san_xuat ON kho_hang.id_nsx = nha_san_xuat.id_nsx\r\nJOIN \r\n    phanh_xe ON kho_hang.id_phanh = phanh_xe.id_phanh";
-            List<MotoBikeDto> motoBikes = motoBikeRepo.motobikes(query);
+			string query = "SELECT " +
+	                        "kho_hang.ten_xe, " +
+	                        "the_loai.ten_loai, " +
+	                        "dong_co.ten_dc, " +
+	                        "mau_sac.ten_mau, " +
+	                        "tinh_trang.ten_TT, " +
+	                        "nha_san_xuat.ten_nsx, " +
+	                        "phanh_xe.ten_phanh, " +
+	                        "kho_hang.gia_ban, " +
+	                        "kho_hang.gia_nhap, " +
+	                        "kho_hang.so_luong " +
+                        "FROM " +
+	                        "kho_hang " +
+                        "JOIN " +
+	                        "the_loai ON kho_hang.id_loai = the_loai.id_loai " +
+                        "JOIN " +
+	                        "dong_co ON kho_hang.id_dc = dong_co.id_dongco " +
+                        "JOIN " +
+	                        "mau_sac ON kho_hang.id_mau = mau_sac.id_mau " +
+                        "JOIN " +
+	                        "tinh_trang ON kho_hang.id_tt = tinh_trang.id_tt " +
+                        "JOIN " +
+	                        "nha_san_xuat ON kho_hang.id_nsx = nha_san_xuat.id_nsx " +
+                        "JOIN " +
+	                        "phanh_xe ON kho_hang.id_phanh = phanh_xe.id_phanh";
+			List<MotoBikeDto> motoBikes = motoBikeRepo.motobikes(query);
             dvgSanPham.DataSource = motoBikes;
 
         }
@@ -56,11 +80,27 @@ namespace QLXeMay.forms
                         IdNSX = addMotoBikeForm.IdNSX,          // ID của nhà sản xuất
                         IdPhanh = addMotoBikeForm.IdPhanh,      // ID của phanh
                         GiaBan = addMotoBikeForm.GiaBan,
+                        GiaNhap = addMotoBikeForm.GiaNhap,
+                        SoLuong = addMotoBikeForm.SoLuong,
+                    };
+
+                    HoaDonNhap hoaDonNhap = new HoaDonNhap
+                    {
+                        IdNhanVien = addMotoBikeForm.IdNhanVien,
+                        IdNhaCungCap = addMotoBikeForm.IdNhaCungCap,
+                        GiaNhap = addMotoBikeForm.GiaNhap
+                    };
+
+                    ChiTietHDN chiTietHDN = new ChiTietHDN
+                    {
+                        SoLuong = addMotoBikeForm.SoLuong,
                         GiaNhap = addMotoBikeForm.GiaNhap
                     };
 
                     // Gọi phương thức thêm xe máy vào cơ sở dữ liệu
                     motoBikeRepo.AddMotoBike(newMotoBike);
+                    HoaDonNhapRepo.AddHoaDonNhap(hoaDonNhap);
+                    ChiTietHDNRepo.AddChiTietHDN(chiTietHDN);
 
                     // Tải lại dữ liệu để hiển thị
                     LoadData();
@@ -69,10 +109,32 @@ namespace QLXeMay.forms
         }
         private void LoadData()
         {
-            string query = "SELECT \r\n    kho_hang.ten_xe,\r\n    the_loai.ten_loai ,\r\n    dong_co.ten_dc ,\r\n   " +
-                " mau_sac.ten_mau ,\r\n    tinh_trang.ten_TT ,\r\n    nha_san_xuat.ten_nsx ,\r\n    phanh_xe.ten_phanh ,\r\n    kho_hang.gia_ban ,\r\n    kho_hang.gia_nhap \r\nFROM \r\n    kho_hang\r\nJOIN \r\n    the_loai ON kho_hang.id_loai = the_loai.id_loai\r\nJOIN \r\n    " +
-                "dong_co ON kho_hang.id_dc = dong_co.id_dongco\r\nJOIN \r\n    mau_sac ON kho_hang.id_mau = mau_sac.id_mau\r\nJOIN \r\n    tinh_trang ON kho_hang.id_tt = tinh_trang.id_tt\r\nJOIN \r\n    nha_san_xuat ON kho_hang.id_nsx = nha_san_xuat.id_nsx\r\nJOIN \r\n    phanh_xe ON kho_hang.id_phanh = phanh_xe.id_phanh";
-            List<MotoBikeDto> motoBikes = motoBikeRepo.motobikes(query);
+			string query = "SELECT " +
+	"kho_hang.ten_xe, " +
+	"the_loai.ten_loai, " +
+	"dong_co.ten_dc, " +
+	"mau_sac.ten_mau, " +
+	"tinh_trang.ten_TT, " +
+	"nha_san_xuat.ten_nsx, " +
+	"phanh_xe.ten_phanh, " +
+	"kho_hang.gia_ban, " +
+	"kho_hang.gia_nhap, " +
+	"kho_hang.so_luong " +
+"FROM " +
+	"kho_hang " +
+"JOIN " +
+	"the_loai ON kho_hang.id_loai = the_loai.id_loai " +
+"JOIN " +
+	"dong_co ON kho_hang.id_dc = dong_co.id_dongco " +
+"JOIN " +
+	"mau_sac ON kho_hang.id_mau = mau_sac.id_mau " +
+"JOIN " +
+	"tinh_trang ON kho_hang.id_tt = tinh_trang.id_tt " +
+"JOIN " +
+	"nha_san_xuat ON kho_hang.id_nsx = nha_san_xuat.id_nsx " +
+"JOIN " +
+	"phanh_xe ON kho_hang.id_phanh = phanh_xe.id_phanh";
+			List<MotoBikeDto> motoBikes = motoBikeRepo.motobikes(query);
             dvgSanPham.DataSource = motoBikes;
         }
 
@@ -98,7 +160,8 @@ namespace QLXeMay.forms
                             IdNSX = editMotoBikeForm.IdNSX,
                             IdPhanh = editMotoBikeForm.IdPhanh,
                             GiaBan = editMotoBikeForm.GiaBan,
-                            GiaNhap = editMotoBikeForm.GiaNhap
+                            GiaNhap = editMotoBikeForm.GiaNhap,
+                            SoLuong = editMotoBikeForm.SoLuong,
                         };
 
                         // Cập nhật thông tin xe máy trong cơ sở dữ liệu
@@ -109,7 +172,7 @@ namespace QLXeMay.forms
                     }
                 }
             }
-        }
+            }
 
         private void btnXoa_Click(object sender, EventArgs e)
         {

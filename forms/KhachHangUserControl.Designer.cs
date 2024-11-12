@@ -40,9 +40,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(190, 76);
+            this.label1.Location = new System.Drawing.Point(36, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(372, 38);
+            this.label1.Size = new System.Drawing.Size(325, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Thông Tin Khách Hàng";
             // 
@@ -69,13 +69,12 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dvgKhachHang.DefaultCellStyle = dataGridViewCellStyle3;
             this.dvgKhachHang.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dvgKhachHang.Location = new System.Drawing.Point(47, 205);
-            this.dvgKhachHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.dvgKhachHang.Location = new System.Drawing.Point(42, 164);
             this.dvgKhachHang.Name = "dvgKhachHang";
             this.dvgKhachHang.RowHeadersVisible = false;
             this.dvgKhachHang.RowHeadersWidth = 51;
             this.dvgKhachHang.RowTemplate.Height = 24;
-            this.dvgKhachHang.Size = new System.Drawing.Size(729, 282);
+            this.dvgKhachHang.Size = new System.Drawing.Size(943, 453);
             this.dvgKhachHang.TabIndex = 2;
             this.dvgKhachHang.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dvgKhachHang.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -102,13 +101,12 @@
             // 
             // KhachHangUserControl
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.dvgKhachHang);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "KhachHangUserControl";
-            this.Size = new System.Drawing.Size(1559, 878);
+            this.Size = new System.Drawing.Size(1386, 702);
             this.Load += new System.EventHandler(this.KhachHangUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dvgKhachHang)).EndInit();
             this.ResumeLayout(false);

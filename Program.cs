@@ -17,8 +17,8 @@ namespace QLXeMay
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Home());
-            //Application.Run(new ());
+            Application.Run(new Login());
+
         }
     }
 }

@@ -28,6 +28,9 @@ namespace QLXeMay.forms
         public string Phanh { get; private set; }
         public decimal GiaBan { get; private set; }
         public decimal GiaNhap { get; private set; }
+        public int SoLuong { get; private set; }
+        public int IdNhanVien { get; private set; }
+        public int IdNhaCungCap { get; private set; }
         private DataTable GetComboBoxData(string query)
         {
             DataTable dataTable = new DataTable();
@@ -65,6 +68,14 @@ namespace QLXeMay.forms
             cboPhanh.DataSource = GetComboBoxData("SELECT id_phanh, ten_phanh FROM phanh_xe");
             cboPhanh.DisplayMember = "ten_phanh";
             cboPhanh.ValueMember = "id_phanh";
+
+            cboNhanVien.DataSource = GetComboBoxData("SELECT id_nv, ten_nv FROM nhan_vien");
+            cboNhanVien.DisplayMember = "ten_nv";
+            cboNhanVien.ValueMember = "id_nv";
+
+            cboNCC.DataSource = GetComboBoxData("SELECT id_ncc, ten_ncc FROM nha_cung_cap");
+            cboNCC.DisplayMember = "ten_ncc";
+            cboNCC.ValueMember = "id_ncc";
         }
 
         private void btlLuu_Click(object sender, EventArgs e)
@@ -78,9 +89,17 @@ namespace QLXeMay.forms
             IdPhanh = (int)cboPhanh.SelectedValue;
             GiaBan = decimal.Parse(txtGiaBan.Text);
             GiaNhap = decimal.Parse(txtGiaNhap.Text);
+            SoLuong = int.Parse(txtSoLuong.Text);
+            IdNhanVien = (int)cboNhanVien.SelectedValue;
+            IdNhaCungCap = (int)cboNCC.SelectedValue;
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void AddMotoBikeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

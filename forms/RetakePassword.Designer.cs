@@ -31,7 +31,7 @@
             this.registerEmail = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.retakePwResult = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.kquaTxt = new System.Windows.Forms.TextBox();
             this.retakePwBtn = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -42,7 +42,7 @@
             this.registerEmail.Location = new System.Drawing.Point(205, 185);
             this.registerEmail.Name = "registerEmail";
             this.registerEmail.Size = new System.Drawing.Size(219, 22);
-            this.registerEmail.TabIndex = 5;
+            this.registerEmail.TabIndex = 1;
             // 
             // label3
             // 
@@ -64,12 +64,12 @@
             this.retakePwResult.TabIndex = 4;
             this.retakePwResult.Text = "Kết quả:";
             // 
-            // textBox1
+            // kquaTxt
             // 
-            this.textBox1.Location = new System.Drawing.Point(205, 257);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(219, 22);
-            this.textBox1.TabIndex = 5;
+            this.kquaTxt.Location = new System.Drawing.Point(205, 257);
+            this.kquaTxt.Name = "kquaTxt";
+            this.kquaTxt.Size = new System.Drawing.Size(219, 22);
+            this.kquaTxt.TabIndex = 2;
             // 
             // retakePwBtn
             // 
@@ -81,6 +81,7 @@
             this.retakePwBtn.TabIndex = 7;
             this.retakePwBtn.Text = "Lấy lại mật khẩu";
             this.retakePwBtn.UseVisualStyleBackColor = true;
+            this.retakePwBtn.Click += new System.EventHandler(this.retakePwBtn_Click);
             // 
             // pictureBox1
             // 
@@ -98,7 +99,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(587, 366);
             this.Controls.Add(this.retakePwBtn);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.kquaTxt);
             this.Controls.Add(this.registerEmail);
             this.Controls.Add(this.retakePwResult);
             this.Controls.Add(this.label3);
@@ -118,7 +119,7 @@
         private System.Windows.Forms.TextBox registerEmail;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label retakePwResult;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox kquaTxt;
         private System.Windows.Forms.Button retakePwBtn;
     }
 }

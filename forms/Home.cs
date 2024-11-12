@@ -13,11 +13,14 @@ namespace QLXeMay.forms
 {
     public partial class Home : Form
     {
-        public Home()
+        private int userId;
+
+        public Home(int userId)
         {
             InitializeComponent();
-            //trangChuUserControl1.BringToFront();
-            //this.Size = new Size(1700, 1000);
+            trangChuUserControl2.BringToFront();
+            this.userId = userId;
+            this.Size = new Size(1700, 1000);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -31,17 +34,17 @@ namespace QLXeMay.forms
 
         private void btnSanPham_Click(object sender, EventArgs e)
         {
-            sanPhamUserControl2.BringToFront();
+            sanPhamUserControl3.BringToFront();
+            sanPhamUserControl3.Dock = DockStyle.Fill;
         }
 
         private void btnKhachHang_Click(object sender, EventArgs e)
         {
-            khachHangUserControl2.BringToFront();
+            khachHangUserControl3.BringToFront();
         }
 
         private void profileControl1_Load(object sender, EventArgs e)
         {
-            profileControl1.BringToFront();
         }
 
         private void Home_Load(object sender, EventArgs e)
@@ -93,6 +96,21 @@ namespace QLXeMay.forms
                 Login loginForm = new Login();
                 loginForm.Show();
             }
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            profileControl4.BringToFront();
+        }
+
+        private void khachHangUserControl3_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

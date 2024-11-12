@@ -35,6 +35,7 @@ namespace QLXeMay.repository
                     moto.Phanh = dataReader.GetString(6);
                     moto.GiaBan = dataReader.GetDecimal(7);     
                     moto.GiaNhap = dataReader.GetDecimal(8);
+                    moto.SoLuong = dataReader.GetInt32(9);
                     motobikes.Add(moto);
                 }
 
@@ -45,8 +46,8 @@ namespace QLXeMay.repository
         public void AddMotoBike(MotoBikeDto moto)
         {
             string query = @"
-    INSERT INTO kho_hang (ten_xe, id_loai, id_dc, id_mau, id_tt, id_nsx, id_phanh, gia_ban, gia_nhap)
-    VALUES (@TenXe, @IdLoai, @IdDongCo, @IdMau, @IdTinhTrang, @IdNSX, @IdPhanh, @GiaBan, @GiaNhap)";
+    INSERT INTO kho_hang (ten_xe, id_loai, id_dc, id_mau, id_tt, id_nsx, id_phanh, gia_ban, gia_nhap, so_luong)
+    VALUES (@TenXe, @IdLoai, @IdDongCo, @IdMau, @IdTinhTrang, @IdNSX, @IdPhanh, @GiaBan, @GiaNhap, @SoLuong)";
 
             using (SqlConnection sqlConnection = DatabaseUtils.connection())
             {
@@ -62,8 +63,9 @@ namespace QLXeMay.repository
                 command.Parameters.AddWithValue("@IdPhanh", moto.IdPhanh);      // Giá trị ID phanh từ ComboBox
                 command.Parameters.AddWithValue("@GiaBan", moto.GiaBan);
                 command.Parameters.AddWithValue("@GiaNhap", moto.GiaNhap);
+				command.Parameters.AddWithValue("@SoLuong", moto.SoLuong);
 
-                command.ExecuteNonQuery();
+				command.ExecuteNonQuery();
             }
         }
         public void UpdateMotoBike(MotoBikeDto moto)
@@ -72,7 +74,7 @@ namespace QLXeMay.repository
     UPDATE kho_hang
     SET id_loai = @IdLoai, id_dc = @IdDongCo, 
         id_mau = @IdMau, id_tt = @IdTinhTrang, id_nsx = @IdNSX, 
-        id_phanh = @IdPhanh
+        id_phanh = @IdPhanh, so_luong = @SoLuong
     WHERE ten_xe = @TenXe"; 
 
             using (SqlConnection sqlConnection = DatabaseUtils.connection())
@@ -89,6 +91,7 @@ namespace QLXeMay.repository
                 command.Parameters.AddWithValue("@IdPhanh", moto.IdPhanh);
                 command.Parameters.AddWithValue("@GiaBan", moto.GiaBan);
                 command.Parameters.AddWithValue("@GiaNhap", moto.GiaNhap);
+                command.Parameters.AddWithValue("@SoLuong", moto.SoLuong);
 
                 command.ExecuteNonQuery();
             }

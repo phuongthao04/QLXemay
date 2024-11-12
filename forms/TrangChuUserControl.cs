@@ -141,7 +141,7 @@ namespace QLXeMay.forms
         }
         private void LoadDoanhThuChart()
         {
-            DateTime today = DateTime.Now;
+            DateTime today = DateTime.Today;
 
             // Tính toán ngày bắt đầu và kết thúc của tuần hiện tại
             DateTime startOfWeek = today.AddDays(-(int)today.DayOfWeek + 1);
@@ -237,6 +237,11 @@ namespace QLXeMay.forms
                     MessageBox.Show("Lỗi: " + ex.Message);
                 }
             }
+        }
+
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

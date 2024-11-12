@@ -60,16 +60,20 @@ namespace QLXeMay
             // Gọi phương thức validate
             validateEntry(usernameTxt, passwordTxt);
 
-            string query = "select * from users " +
-                           "where username = '" + usernameTxt + "' " +
-                           "and passwrd = '" + passwordTxt + "'";
+            string query = "SELECT * FROM users " +
+               "WHERE username = '" + usernameTxt + "' " +
+               "AND passwrd = '" + passwordTxt + "'";
 
-            if (usersRepository.users(query).Count > 0)
+            var result = usersRepository.users(query);
+
+
+            if (result.Count > 0)
             {
+                int userId = result[0].UserId;
                 MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Mở trang Home và ẩn trang Login
-                Home homeForm = new Home();
+                Home homeForm = new Home(userId);
                 homeForm.Show();
                 this.Hide(); // Ẩn form Login
             }
@@ -81,7 +85,6 @@ namespace QLXeMay
 
         private void Login_Load(object sender, EventArgs e)
         {
-            password.PasswordChar = '*';
         }
     }
 }

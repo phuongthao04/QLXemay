@@ -39,17 +39,18 @@
             System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.dtpDate = new Guna.UI2.WinForms.Guna2DateTimePicker();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblSoKhachHang = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.lblSoSP = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblSoDH = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.lblDoanhSoHT = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.guna2HtmlLabel8 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.dtbKhachHangTrangChu = new Guna.UI2.WinForms.Guna2DataGridView();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.chartSSXe = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -70,7 +71,7 @@
             this.dtpDate.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpDate.Location = new System.Drawing.Point(43, 33);
-            this.dtpDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtpDate.Margin = new System.Windows.Forms.Padding(4);
             this.dtpDate.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.dtpDate.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.dtpDate.Name = "dtpDate";
@@ -80,87 +81,102 @@
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.BorderRadius = 10;
+            this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.lblSoKhachHang);
-            this.guna2Panel1.Controls.Add(this.guna2HtmlLabel1);
             this.guna2Panel1.FillColor = System.Drawing.Color.White;
             this.guna2Panel1.Location = new System.Drawing.Point(43, 103);
-            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel1.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel1.Name = "guna2Panel1";
             this.guna2Panel1.Size = new System.Drawing.Size(269, 114);
             this.guna2Panel1.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(78, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 20);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Số khách hàng";
             // 
             // lblSoKhachHang
             // 
             this.lblSoKhachHang.BackColor = System.Drawing.Color.Transparent;
             this.lblSoKhachHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblSoKhachHang.Location = new System.Drawing.Point(37, 76);
-            this.lblSoKhachHang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblSoKhachHang.Margin = new System.Windows.Forms.Padding(4);
             this.lblSoKhachHang.Name = "lblSoKhachHang";
             this.lblSoKhachHang.Size = new System.Drawing.Size(14, 26);
             this.lblSoKhachHang.TabIndex = 3;
             this.lblSoKhachHang.Text = "0";
             // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(87, 28);
-            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(123, 22);
-            this.guna2HtmlLabel1.TabIndex = 2;
-            this.guna2HtmlLabel1.Text = "Số khách hàng";
-            // 
             // guna2Panel2
             // 
+            this.guna2Panel2.BorderRadius = 10;
+            this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.Controls.Add(this.lblSoSP);
-            this.guna2Panel2.Controls.Add(this.guna2HtmlLabel4);
             this.guna2Panel2.FillColor = System.Drawing.Color.White;
             this.guna2Panel2.Location = new System.Drawing.Point(356, 103);
-            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel2.Name = "guna2Panel2";
             this.guna2Panel2.Size = new System.Drawing.Size(269, 114);
             this.guna2Panel2.TabIndex = 4;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(80, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(118, 20);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Số sản phẩm";
             // 
             // lblSoSP
             // 
             this.lblSoSP.BackColor = System.Drawing.Color.Transparent;
             this.lblSoSP.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblSoSP.Location = new System.Drawing.Point(37, 76);
-            this.lblSoSP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblSoSP.Margin = new System.Windows.Forms.Padding(4);
             this.lblSoSP.Name = "lblSoSP";
             this.lblSoSP.Size = new System.Drawing.Size(14, 26);
             this.lblSoSP.TabIndex = 3;
             this.lblSoSP.Text = "0";
             // 
-            // guna2HtmlLabel4
-            // 
-            this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(87, 28);
-            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(108, 22);
-            this.guna2HtmlLabel4.TabIndex = 2;
-            this.guna2HtmlLabel4.Text = "Số sản phẩm";
-            // 
             // guna2Panel3
             // 
+            this.guna2Panel3.BorderRadius = 10;
+            this.guna2Panel3.Controls.Add(this.label3);
             this.guna2Panel3.Controls.Add(this.lblSoDH);
             this.guna2Panel3.Controls.Add(this.guna2HtmlLabel6);
             this.guna2Panel3.FillColor = System.Drawing.Color.White;
             this.guna2Panel3.Location = new System.Drawing.Point(664, 103);
-            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel3.Name = "guna2Panel3";
             this.guna2Panel3.Size = new System.Drawing.Size(269, 114);
             this.guna2Panel3.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(83, 28);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 20);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Số đơn hàng";
             // 
             // lblSoDH
             // 
             this.lblSoDH.BackColor = System.Drawing.Color.Transparent;
             this.lblSoDH.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblSoDH.Location = new System.Drawing.Point(37, 76);
-            this.lblSoDH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblSoDH.Margin = new System.Windows.Forms.Padding(4);
             this.lblSoDH.Name = "lblSoDH";
             this.lblSoDH.Size = new System.Drawing.Size(14, 26);
             this.lblSoDH.TabIndex = 3;
@@ -171,44 +187,45 @@
             this.guna2HtmlLabel6.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
             this.guna2HtmlLabel6.Location = new System.Drawing.Point(87, 28);
-            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2HtmlLabel6.Margin = new System.Windows.Forms.Padding(4);
             this.guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            this.guna2HtmlLabel6.Size = new System.Drawing.Size(105, 22);
+            this.guna2HtmlLabel6.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel6.TabIndex = 2;
-            this.guna2HtmlLabel6.Text = "Số đơn hàng";
+            this.guna2HtmlLabel6.Text = null;
             // 
             // guna2Panel4
             // 
+            this.guna2Panel4.BorderRadius = 10;
+            this.guna2Panel4.Controls.Add(this.label4);
             this.guna2Panel4.Controls.Add(this.lblDoanhSoHT);
-            this.guna2Panel4.Controls.Add(this.guna2HtmlLabel8);
             this.guna2Panel4.FillColor = System.Drawing.Color.White;
             this.guna2Panel4.Location = new System.Drawing.Point(975, 103);
-            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(4);
             this.guna2Panel4.Name = "guna2Panel4";
             this.guna2Panel4.Size = new System.Drawing.Size(269, 114);
             this.guna2Panel4.TabIndex = 6;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.White;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label4.Location = new System.Drawing.Point(78, 28);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(167, 20);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Doanh số hệ thống";
             // 
             // lblDoanhSoHT
             // 
             this.lblDoanhSoHT.BackColor = System.Drawing.Color.Transparent;
             this.lblDoanhSoHT.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold);
             this.lblDoanhSoHT.Location = new System.Drawing.Point(37, 76);
-            this.lblDoanhSoHT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lblDoanhSoHT.Margin = new System.Windows.Forms.Padding(4);
             this.lblDoanhSoHT.Name = "lblDoanhSoHT";
             this.lblDoanhSoHT.Size = new System.Drawing.Size(14, 26);
             this.lblDoanhSoHT.TabIndex = 3;
             this.lblDoanhSoHT.Text = "0";
-            // 
-            // guna2HtmlLabel8
-            // 
-            this.guna2HtmlLabel8.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold);
-            this.guna2HtmlLabel8.Location = new System.Drawing.Point(87, 28);
-            this.guna2HtmlLabel8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.guna2HtmlLabel8.Name = "guna2HtmlLabel8";
-            this.guna2HtmlLabel8.Size = new System.Drawing.Size(156, 22);
-            this.guna2HtmlLabel8.TabIndex = 2;
-            this.guna2HtmlLabel8.Text = "Doanh số hệ thống";
             // 
             // dtbKhachHangTrangChu
             // 
@@ -234,7 +251,7 @@
             this.dtbKhachHangTrangChu.DefaultCellStyle = dataGridViewCellStyle3;
             this.dtbKhachHangTrangChu.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dtbKhachHangTrangChu.Location = new System.Drawing.Point(43, 247);
-            this.dtbKhachHangTrangChu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dtbKhachHangTrangChu.Margin = new System.Windows.Forms.Padding(4);
             this.dtbKhachHangTrangChu.Name = "dtbKhachHangTrangChu";
             this.dtbKhachHangTrangChu.RowHeadersVisible = false;
             this.dtbKhachHangTrangChu.RowHeadersWidth = 51;
@@ -269,7 +286,7 @@
             legend1.Name = "Legend1";
             this.chartDoanhThu.Legends.Add(legend1);
             this.chartDoanhThu.Location = new System.Drawing.Point(840, 465);
-            this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chartDoanhThu.Margin = new System.Windows.Forms.Padding(4);
             this.chartDoanhThu.Name = "chartDoanhThu";
             series1.BorderWidth = 3;
             series1.ChartArea = "ChartArea1";
@@ -335,18 +352,19 @@
         private Guna.UI2.WinForms.Guna2DateTimePicker dtpDate;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblSoKhachHang;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel2;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblSoSP;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel3;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblSoDH;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private Guna.UI2.WinForms.Guna2HtmlLabel lblDoanhSoHT;
-        private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel8;
         private Guna.UI2.WinForms.Guna2DataGridView dtbKhachHangTrangChu;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartSSXe;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
     }
 }

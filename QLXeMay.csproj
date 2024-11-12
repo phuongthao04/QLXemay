@@ -74,7 +74,11 @@
     </Compile>
     <Compile Include="data-connection\ClassQLXM.cs" />
     <Compile Include="data-connection\DatabaseUtils.cs" />
+    <Compile Include="dto\ChiTietHDN.cs" />
+    <Compile Include="dto\HoaDonNhap.cs" />
     <Compile Include="dto\MotoBikeDto.cs" />
+    <Compile Include="dto\Staff.cs" />
+    <Compile Include="dto\UserRegister.cs" />
     <Compile Include="forms\AddMotoBikeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,7 +156,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>qlxmDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="repository\ChiTietHDNRepo.cs" />
+    <Compile Include="repository\HoaDonNhapRepo.cs" />
     <Compile Include="repository\MotoBikeRepository.cs" />
+    <Compile Include="repository\StaffRepository.cs" />
     <Compile Include="repository\UsersRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -168,7 +175,7 @@
     <Compile Include="forms\RetakePassword.Designer.cs">
       <DependentUpon>RetakePassword.cs</DependentUpon>
     </Compile>
-    <Compile Include="entity\Users.cs" />
+    <Compile Include="dto\Users.cs" />
     <EmbeddedResource Include="forms\AddMotoBikeForm.resx">
       <DependentUpon>AddMotoBikeForm.cs</DependentUpon>
     </EmbeddedResource>

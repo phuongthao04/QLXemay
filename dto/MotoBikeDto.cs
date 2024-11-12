@@ -24,7 +24,8 @@ namespace QLXeMay.dto
         public int IdTinhTrang;  
         public int IdNSX;         
         public int IdPhanh;
-        public MotoBikeDto()
+		private int soLuong;
+		public MotoBikeDto()
         {
         }
 
@@ -46,5 +47,7 @@ namespace QLXeMay.dto
         public decimal GiaBan { get => giaBan; set => giaBan = value; }
         [DisplayName("Giá nhập")]
         public decimal GiaNhap { get => giaNhap; set => giaNhap = value; }
-    }
+		[DisplayName("Số Lượng")]
+		public int SoLuong { get => soLuong; set => soLuong = value; }
+	}
 }
