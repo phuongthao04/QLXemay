@@ -70,7 +70,7 @@
 			this.btlLuu.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
 			this.btlLuu.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.btlLuu.ForeColor = System.Drawing.Color.White;
-			this.btlLuu.Location = new System.Drawing.Point(1185, 695);
+			this.btlLuu.Location = new System.Drawing.Point(975, 711);
 			this.btlLuu.Name = "btlLuu";
 			this.btlLuu.Size = new System.Drawing.Size(126, 52);
 			this.btlLuu.TabIndex = 35;
@@ -497,7 +497,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1341, 767);
+			this.ClientSize = new System.Drawing.Size(1136, 775);
 			this.Controls.Add(this.label16);
 			this.Controls.Add(this.label15);
 			this.Controls.Add(this.guna2Panel2);

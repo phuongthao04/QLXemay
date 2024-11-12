@@ -78,5 +78,11 @@ namespace QLXeMay.forms
         {
 
         }
-    }
+
+		private void nameItem_Click(object sender, EventArgs e)
+		{
+
+
+		}
+	}
 }
