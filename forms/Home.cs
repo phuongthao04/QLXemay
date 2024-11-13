@@ -21,6 +21,7 @@ namespace QLXeMay.forms
             trangChuUserControl2.BringToFront();
             this.userId = userId;
             this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.Width = 1175;this.Height = 750;
             this.MaximizeBox = true;
             this.MinimizeBox = true;
         }
