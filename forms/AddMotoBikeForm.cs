@@ -80,6 +80,30 @@ namespace QLXeMay.forms
 
         private void btlLuu_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(txtTenXe.Text))
+            {
+                MessageBox.Show("Tên xe không được để trống.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtGiaBan.Text) || !decimal.TryParse(txtGiaBan.Text, out decimal giaBan))
+            {
+                MessageBox.Show("Giá bán phải là một số hợp lệ.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtGiaNhap.Text) || !decimal.TryParse(txtGiaNhap.Text, out decimal giaNhap))
+            {
+                MessageBox.Show("Giá nhập phải là một số hợp lệ.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (string.IsNullOrWhiteSpace(txtSoLuong.Text) || !int.TryParse(txtSoLuong.Text, out int soLuong))
+            {
+                MessageBox.Show("Số lượng phải là một số nguyên hợp lệ.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             TenXe = txtTenXe.Text;
             IdLoai = (int)cboLoai.SelectedValue;
             IdDongCo = (int)cboDongCo.SelectedValue;

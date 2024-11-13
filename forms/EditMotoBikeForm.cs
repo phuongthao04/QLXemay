@@ -97,6 +97,13 @@ namespace QLXeMay.forms
         }
         private void btlLuu_Click(object sender, EventArgs e)
         {
+            
+            if (string.IsNullOrWhiteSpace(txtSoLuong.Text) || !int.TryParse(txtSoLuong.Text, out int soLuong))
+            {
+                MessageBox.Show("Số lượng phải là một số nguyên hợp lệ.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             TenXe = txtTenXe.Text;
             IdLoai = (int)cboLoai.SelectedValue;
             IdDongCo = (int)cboDongCo.SelectedValue;
